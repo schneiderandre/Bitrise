@@ -10,27 +10,29 @@ import XCTest
 @testable import Bitrise
 
 class BitriseTests: XCTestCase {
-    
+
+    var sut: ViewModel!
+
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        sut = ViewModel()
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+
+    // MARK: init()
+
+    func test__init_sets_the_quantity() {
+        XCTAssertEqual(sut.quantity.value, "0")
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+    func test__init_sets_the_button_title() {
+        XCTAssertEqual(sut.buttonTitle.value, "increment")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+
+    // MARK: increment()
+
+    func test_increment_sets_the_quatity() {
+        sut.quantity.value("5")
+        sut.increment()
+        XCTAssertEqual(sut.quantity.value, "6")
     }
-    
 }
