@@ -20,19 +20,25 @@ class BitriseTests: XCTestCase {
 
     // MARK: init()
 
-    func test__init_sets_the_quantity() {
+    func test__init__sets_the_quantity() {
         XCTAssertEqual(sut.quantity.value, "0")
     }
 
-    func test__init_sets_the_button_title() {
+    func test__init__sets_the_button_title() {
         XCTAssertEqual(sut.buttonTitle.value, "increment")
     }
 
     // MARK: increment()
 
-    func test_increment_sets_the_quatity() {
+    func test__increment__sets_the_quatity() {
         sut.quantity.value("5")
         sut.increment()
         XCTAssertEqual(sut.quantity.value, "6")
+    }
+
+    func test__increment__when_value_not_integer__sets_nothing() {
+        sut.quantity.value("NaN")
+        sut.increment()
+        XCTAssertEqual(sut.quantity.value, "NaN")
     }
 }
