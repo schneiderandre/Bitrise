@@ -10,16 +10,30 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var incrementButton: UIButton!
+    @IBOutlet weak var quantityLabel: UILabel!
+
+    var viewModel: ViewModelType!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        configureViewModelBindings(viewModel)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func increment(sender: UIButton) {
+        viewModel.increment()
     }
 
+    // Private Methods
 
+    private func configureViewModelBindings(viewModel: ViewModelType) {
+        viewModel.quantity.bind { [weak self] value in
+            self?.quantityLabel.text = value
+        }
+
+        viewModel.buttonTitle.bind { [weak self] value in
+            self?.incrementButton.setTitle(value, forState: .Normal)
+        }
+    }
 }
 
