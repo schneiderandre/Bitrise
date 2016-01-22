@@ -19,4 +19,3 @@ struct ViewModel: ViewModelType {
         quantity.value(String(value + 1))
     }
 }
-
