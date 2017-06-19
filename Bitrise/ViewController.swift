@@ -20,19 +20,19 @@ class ViewController: UIViewController {
         configureViewModelBindings(viewModel)
     }
 
-    @IBAction func increment(sender: UIButton) {
+    @IBAction func increment(_ sender: UIButton) {
         viewModel.increment()
     }
 
     // Private Methods
 
-    private func configureViewModelBindings(viewModel: ViewModelType) {
+    fileprivate func configureViewModelBindings(_ viewModel: ViewModelType) {
         viewModel.quantity.bind { [weak self] value in
             self?.quantityLabel.text = value
         }
 
         viewModel.buttonTitle.bind { [weak self] value in
-            self?.incrementButton.setTitle(value, forState: .Normal)
+            self?.incrementButton.setTitle(value, for: UIControlState())
         }
     }
 }
