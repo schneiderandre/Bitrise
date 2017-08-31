@@ -18,16 +18,6 @@ class BitriseTests: XCTestCase {
         sut = ViewModel()
     }
 
-    // MARK: init()
-
-    func test__init__sets_the_quantity() {
-        XCTAssertEqual(sut.quantity.value, "0")
-    }
-
-    func test__init__sets_the_button_title() {
-        XCTAssertEqual(sut.buttonTitle.value, "increment")
-    }
-
     // MARK: increment()
 
     func test__increment__sets_the_quatity() {
